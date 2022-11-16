@@ -24,7 +24,12 @@
                     </li>
                 </ul>
             </div>
-            <button class="btn bg-danger text-white">Sign out</button>
+            
+            @if (@User.Identity.IsAuthenticated)
+            {
+                <a asp-action="Index" asp-controller="SignOut" class="btn bg-danger text-white">Sign out</a>
+            }            
+            
         </div>
     </nav>
 </header>

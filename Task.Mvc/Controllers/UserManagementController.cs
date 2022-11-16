@@ -12,12 +12,10 @@ namespace Task.Mvc.Controllers;
 public class UserManagementController : BaseController
 {
     private readonly IMediator _mediator;
-    private readonly IMapper _mapper;
 
-    public UserManagementController(IMediator mediator, IMapper mapper)
+    public UserManagementController(IMediator mediator)
     {
         _mediator = mediator;
-        _mapper = mapper;
     }
 
     [HttpGet]
