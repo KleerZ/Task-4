@@ -19,7 +19,7 @@ public static class DependencyInjection
         services.AddDbContext<ApplicationContext>(options =>
         {
             options.UseNpgsql(connectionString,
-                b => b.MigrationsAssembly("WebApp.Persistence"));
+                project => project.MigrationsAssembly("WebApp.Persistence"));
         });
         
         services.AddIdentity<User, IdentityRole<long>>(options =>

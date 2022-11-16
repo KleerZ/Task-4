@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - Task.Mvc</title>
+    <title>@ViewData["Title"] - Task4</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/Task.Mvc.styles.css" asp-append-version="true"/>
@@ -18,9 +18,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            @if (@User.Identity.IsAuthenticated)
+            @if (User.Identity.IsAuthenticated)
             {
-                <a asp-action="Index" asp-controller="SignOut" class="btn bg-danger text-white">Sign out</a>
+                <a asp-action="SignOut" asp-controller="UserManagement" class="btn bg-danger text-white">Sign out</a>
             }            
             
         </div>
@@ -34,6 +34,8 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/sendData.js" asp-append-version="true"></script>
+<script src="~/js/getCheckedUsers.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

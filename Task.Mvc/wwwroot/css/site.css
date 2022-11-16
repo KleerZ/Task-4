@@ -30,3 +30,7 @@ html {
   background: #cacbcb;
   transition: all linear .1s;
 }
+
+.user-table-row{
+  border-bottom: 1px solid #cbcbcb;
+}

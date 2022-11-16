@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "User Management";
-
 }
 
 <div class="container mt-5 px-2">
@@ -48,10 +47,9 @@
             </thead>
             <tbody>
 
-
             @foreach (var user in Model)
             {
-                <tr>
+                <tr class="user-table-row">
                     <th scope="row">
                         <input class="form-check-input user-chbox" value="@user.Id" type="checkbox">
                     </th>
@@ -65,7 +63,5 @@
             }
             </tbody>
         </table>
-
     </div>
-
 </div>

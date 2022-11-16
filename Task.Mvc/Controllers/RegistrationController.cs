@@ -33,7 +33,7 @@ public class RegistrationController : Controller
         var command = _mapper.Map<CreateUserCommand>(model);
         var result = await _mediator.Send(command);
 
-        if (result is not CreateUserResult.Successfully)
+        if (result != CreateUserResult.Successfully)
         {
             ModelState.AddModelError("UserIsExist", "User with this email already exist");
             return View(model);

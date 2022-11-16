@@ -1,11 +1,13 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Task.Application.CommandsQueries.User.Commands.Block;
 using Task.Application.CommandsQueries.User.Commands.Delete;
 using Task.Application.CommandsQueries.User.Commands.UnBlock;
 using Task.Application.CommandsQueries.User.Queries.GetAll;
 using Task.Application.Common.Filters;
+using Task.Domain;
 
 namespace Task.Mvc.Controllers;
 
@@ -14,10 +16,13 @@ namespace Task.Mvc.Controllers;
 public class UserManagementController : BaseController
 {
     private readonly IMediator _mediator;
+    private readonly SignInManager<User> _signInManager;
 
-    public UserManagementController(IMediator mediator)
+    public UserManagementController(IMediator mediator,
+        SignInManager<User> signInManager)
     {
         _mediator = mediator;
+        _signInManager = signInManager;
     }
 
     [HttpGet]
@@ -64,5 +69,13 @@ public class UserManagementController : BaseController
         await _mediator.Send(command);
 
         return RedirectToAction("Index", "UserManagement");
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> SignOut()
+    {
+        await _signInManager.SignOutAsync();
+        
+        return RedirectToAction("Index", "Login");
     }
 }
