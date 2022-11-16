@@ -1,4 +1,5 @@
 using System.Reflection;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Task.Application;
 using Task.Application.Common.Mappings;
 using Task.Application.Interfaces;
@@ -14,13 +15,13 @@ builder.Services.AddAutoMapper(config =>
     config.AddProfile(new AssemblyMappingProfile(typeof(IApplicationContext).Assembly));
 });
 
-builder.Services.ConfigureApplicationCookie(option =>
-{
-    option.LoginPath = "/Registration/Index";
-});
-
 builder.Services.AddApplication();
 builder.Services.AddPersistence(builder.Configuration);
+
+builder.Services.ConfigureApplicationCookie(option =>
+{
+    option.LoginPath = "/Login/Index";
+});
 
 builder.Services.AddControllersWithViews()
     .AddRazorRuntimeCompilation();
