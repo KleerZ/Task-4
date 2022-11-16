@@ -1,5 +1,4 @@
 using System.Reflection;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Task.Application;
 using Task.Application.Common.Mappings;
 using Task.Application.Interfaces;

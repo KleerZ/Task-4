@@ -1,10 +1,10 @@
 ﻿let mainCheckbox = document.getElementById("main-checkbox")
-mainCheckbox.onchange = function (e) {
+mainCheckbox.addEventListener('change', function (e) {
     let boxes = document.querySelectorAll("table input[type='checkbox']")
     for (let i = 0; i < boxes.length; i++) {
         boxes[i].checked = mainCheckbox.checked === true;
     }
-}
+})
 
 function getCheckedUsers() {
     let checkboxes = document.getElementsByClassName('user-chbox')
@@ -26,6 +26,12 @@ let blockBtn = document.getElementById('block-btn')
 blockBtn.addEventListener('click', async function (){
     await SendData("UserManagement/Block", getCheckedUsers())
 })
+
+let unblockBtn = document.getElementById('unblock-btn')
+unblockBtn.addEventListener('click', async function (){
+    await SendData("UserManagement/Unblock", getCheckedUsers())
+})
+
 
 async function SendData(input, data) {
     await fetch(input, {
