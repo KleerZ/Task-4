@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Task.Application.CommandsQueries.User.Commands.Create;
 using Task.Mvc.Models.User;
 
-namespace Task.Mvc.Controllers.User;
+namespace Task.Mvc.Controllers;
 
 public class RegistrationController : Controller
 {

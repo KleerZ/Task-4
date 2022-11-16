@@ -1,0 +1,21 @@
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using LoginViewModel = Task.Mvc.Models.User.LoginViewModel
+
+@model LoginViewModel
+
+<form asp-action="Index" asp-controller="Login" class="col-md-4">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <span class="validation-error" asp-validation-for="Email"></span>
+        <span class="validation-error" aria-max>@Html.ValidationMessage("UserIsNotExist")</span>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1">
+        <span class="validation-error" asp-validation-for="Password"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+    <a asp-action="Index" asp-controller="Registration" class="btn btn-outline-secondary">Registration</a>
+</form>
