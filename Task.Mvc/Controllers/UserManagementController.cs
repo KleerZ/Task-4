@@ -1,4 +1,3 @@
-using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -6,9 +5,12 @@ using Task.Application.CommandsQueries.User.Commands.Block;
 using Task.Application.CommandsQueries.User.Commands.Delete;
 using Task.Application.CommandsQueries.User.Commands.UnBlock;
 using Task.Application.CommandsQueries.User.Queries.GetAll;
+using Task.Application.Common.Filters;
 
 namespace Task.Mvc.Controllers;
 
+[ServiceFilter(typeof(StatusValidationFilter))]
+[Authorize]
 public class UserManagementController : BaseController
 {
     private readonly IMediator _mediator;
@@ -19,7 +21,6 @@ public class UserManagementController : BaseController
     }
 
     [HttpGet]
-    [Authorize]
     public async Task<IActionResult> Index()
     {
         var query = new GetAllUsersQuery();

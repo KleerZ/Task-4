@@ -1,5 +1,6 @@
 using System.Reflection;
 using Task.Application;
+using Task.Application.Common.Filters;
 using Task.Application.Common.Mappings;
 using Task.Application.Interfaces;
 using Task.Persistence;
@@ -24,6 +25,8 @@ builder.Services.ConfigureApplicationCookie(option =>
 
 builder.Services.AddControllersWithViews()
     .AddRazorRuntimeCompilation();
+
+builder.Services.AddScoped<StatusValidationFilter>();
 
 var app = builder.Build();
 
