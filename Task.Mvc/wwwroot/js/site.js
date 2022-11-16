@@ -4,6 +4,10 @@ mainCheckbox.addEventListener('change', function (e) {
     for (let i = 0; i < boxes.length; i++) {
         boxes[i].checked = mainCheckbox.checked === true;
     }
+    let allCheckboxes = document.querySelectorAll('.user-chbox');
+    allCheckboxes.forEach(c => {
+        c.parentNode.parentNode.classList[this.checked ? 'add' : 'remove']('active-row');
+    })
 })
 
 function getCheckedUsers() {
@@ -50,5 +54,11 @@ async function SendData(input, data) {
         document.location.reload();
     }
 }
+
+[].forEach.call(document.querySelectorAll('.user-chbox'), function(el) {
+    el.addEventListener('change', function() {
+        this.parentNode.parentNode.classList[this.checked ? 'add' : 'remove']('active-row');
+    });
+});
 
 

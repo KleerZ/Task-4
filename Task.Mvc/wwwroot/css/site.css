@@ -26,7 +26,7 @@ html {
   top: 0;
 }
 
-.checked-row{
+.active-row{
   background: #cacbcb;
-  border-radius: 10px;
+  transition: all linear .1s;
 }
