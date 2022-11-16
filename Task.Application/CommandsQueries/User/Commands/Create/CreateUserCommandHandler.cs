@@ -1,6 +1,7 @@
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Task.Application.Constants;
 
 namespace Task.Application.CommandsQueries.User.Commands.Create;
 
@@ -28,7 +29,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Creat
         var user = _mapper.Map<Domain.User>(request);
         user.RegistrationDate = DateTime.UtcNow;
         user.LastLoginDate = DateTime.UtcNow;
-        user.Status = string.Empty;
+        user.Status = UserStatus.Default;
 
         await _userManager.CreateAsync(user);
         await _signInManager.SignInAsync(user, false);

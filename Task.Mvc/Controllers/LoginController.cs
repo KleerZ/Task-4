@@ -30,14 +30,13 @@ public class LoginController : Controller
             return View(model);
 
         var query = _mapper.Map<LoginUserQuery>(model);
-        var result = await _mediator.Send(query);
-
-        if (result == LoginResult.Failure)
-        {
-            ModelState.AddModelError("UserIsNotExist", "There is no user with this data");
-            return View(model);
-        }
+        query.ModelState = ModelState;
         
-        return RedirectToAction("Index", "Home");
+        var modelState = await _mediator.Send(query);
+
+        if (!modelState.IsValid)
+            return View(model);
+
+        return !modelState.IsValid ? View(model) : RedirectToAction("Index", "UserManagement");
     }
 }

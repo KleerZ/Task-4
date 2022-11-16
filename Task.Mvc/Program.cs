@@ -1,6 +1,6 @@
 using System.Reflection;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Task.Application;
+using Task.Application.Common.Filters;
 using Task.Application.Common.Mappings;
 using Task.Application.Interfaces;
 using Task.Persistence;
@@ -26,6 +26,8 @@ builder.Services.ConfigureApplicationCookie(option =>
 builder.Services.AddControllersWithViews()
     .AddRazorRuntimeCompilation();
 
+builder.Services.AddScoped<StatusValidationFilter>();
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -44,6 +46,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=UserManagement}/{action=Index}/{id?}");
 
 app.Run();

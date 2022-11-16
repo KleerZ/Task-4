@@ -2,6 +2,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Task.Application.CommandsQueries.User.Commands.Create;
+using Task.Application.Constants;
 using Task.Mvc.Models.User;
 
 namespace Task.Mvc.Controllers;
@@ -32,12 +33,12 @@ public class RegistrationController : Controller
         var command = _mapper.Map<CreateUserCommand>(model);
         var result = await _mediator.Send(command);
 
-        if (result is not CreateUserResult.Successfully)
+        if (result != CreateUserResult.Successfully)
         {
             ModelState.AddModelError("UserIsExist", "User with this email already exist");
             return View(model);
         }
 
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Index", "UserManagement");
     }
 }

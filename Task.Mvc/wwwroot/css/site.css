@@ -13,10 +13,24 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
-}
-
 .validation-error{
   color: red
+}
+
+.user-table{
+  height: 600px;
+}
+
+.user-table-head{
+  position: sticky;
+  top: 0;
+}
+
+.active-row{
+  background: #cacbcb;
+  transition: all linear .1s;
+}
+
+.user-table-row{
+  border-bottom: 1px solid #cbcbcb;
 }

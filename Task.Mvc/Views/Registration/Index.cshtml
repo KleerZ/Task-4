@@ -1,7 +1,12 @@
 @using Microsoft.AspNetCore.Mvc.Rendering
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @using RegistrationViewModel = Task.Mvc.Models.User.RegistrationViewModel
+
 @model RegistrationViewModel
+
+@{
+    ViewData["Title"] = "Registration";
+}
 
 <form asp-action="Index" asp-controller="Registration" class="col-md-4">
     <div class="mb-3">
