@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Task.Application.CommandsQueries.User.Commands.Block;
+using Task.Application.CommandsQueries.User.Commands.Delete;
 using Task.Application.CommandsQueries.User.Commands.UnBlock;
 using Task.Application.CommandsQueries.User.Queries.GetAll;
 
@@ -51,5 +52,18 @@ public class UserManagementController : BaseController
         await _mediator.Send(command);
 
         return RedirectToAction("Index");
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> Delete([FromBody] long[] checkedUsers)
+    {
+        var command = new DeleteUserCommand
+        {
+            CheckedUsers = checkedUsers,
+            CurrentUserId = UserId
+        };
+        await _mediator.Send(command);
+
+        return RedirectToAction("Index", "UserManagement");
     }
 }

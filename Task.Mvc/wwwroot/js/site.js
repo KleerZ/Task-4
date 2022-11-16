@@ -32,17 +32,23 @@ unblockBtn.addEventListener('click', async function (){
     await SendData("UserManagement/Unblock", getCheckedUsers())
 })
 
+let deleteBtn = document.getElementById('delete-btn')
+deleteBtn.addEventListener('click', async function (){
+    await SendData("UserManagement/Delete", getCheckedUsers())
+})
 
 async function SendData(input, data) {
-    await fetch(input, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    });
+    if (getCheckedUsers().length > 0){
+        await fetch(input, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
 
-    document.location.reload();
+        document.location.reload();
+    }
 }
 
 
