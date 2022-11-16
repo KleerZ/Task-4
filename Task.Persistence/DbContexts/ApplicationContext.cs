@@ -9,6 +9,8 @@ namespace Task.Persistence.DbContexts;
 public class ApplicationContext : IdentityDbContext<User, IdentityRole<long>, long>,
     IApplicationContext
 {
+    public DbSet<User> Users { get; set; }
+
     public ApplicationContext(DbContextOptions<ApplicationContext> options)
         : base(options)
     {

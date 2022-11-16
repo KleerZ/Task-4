@@ -1,4 +1,42 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿let mainCheckbox = document.getElementById("main-checkbox")
+mainCheckbox.onchange = function (e) {
+    let boxes = document.querySelectorAll("table input[type='checkbox']")
+    for (let i = 0; i < boxes.length; i++) {
+        boxes[i].checked = mainCheckbox.checked === true;
+    }
+}
 
-// Write your JavaScript code.
+function getCheckedUsers() {
+    let checkboxes = document.getElementsByClassName('user-chbox')
+    let checked = []
+    for (let index = 0; index < checkboxes.length; index++) {
+        if (checkboxes[index].checked) {
+            checked.push(checkboxes[index].value);
+        }
+    }
+    
+    let checkedUsers = []
+    let a = new Set(checked);
+    a.forEach(x => checkedUsers.push(x));
+
+    return checkedUsers
+}
+
+let blockBtn = document.getElementById('block-btn')
+blockBtn.addEventListener('click', async function (){
+    await SendData("UserManagement/Block", getCheckedUsers())
+})
+
+async function SendData(input, data) {
+    await fetch(input, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+
+    document.location.reload();
+}
+
+

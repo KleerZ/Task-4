@@ -1,0 +1,61 @@
+@model dynamic
+
+@{
+    ViewData["Title"] = "User Management";
+
+}
+
+<div class="container mt-5 px-2">
+
+    <div class="mb-2 d-flex justify-content-between align-items-center">
+
+        <div class="position-relative">
+                <button type="submit" id="block-btn" class="btn btn-dark">Block</button>
+                <button class="btn btn-success">Unblock</button>
+                <button class="btn btn-danger text-white">Delete</button>
+        </div>
+
+        <div class="px-2">
+            <i class="fa fa-ellipsis-h ms-3"></i>
+        </div>
+
+    </div>
+    <div class="table-responsive user-table">
+        <table class="table table-responsive table-borderless">
+
+            <thead class="user-table-head">
+            <tr class="bg-light">
+                <th scope="col" width="5%">
+                    <input id="main-checkbox" class="form-check-input" type="checkbox">
+                </th>
+                <th scope="col" width="5%">Id</th>
+                <th scope="col" width="10%">Username</th>
+                <th scope="col" width="10%">Email</th>
+                <th scope="col" width="10%">Registration date</th>
+                <th scope="col" width="10%">Last login date</th>
+                <th scope="col" width="10%">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <th scope="row">
+                        <input class="form-check-input user-chbox" value="@user.Id" type="checkbox">
+                    </th>
+                    <td class="user-id">@user.Id</td>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>@user.RegistrationDate</td>
+                    <td>@user.LastLoginDate</td>
+                    <td>@user.Status</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

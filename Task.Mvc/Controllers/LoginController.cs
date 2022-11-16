@@ -38,6 +38,6 @@ public class LoginController : Controller
             return View(model);
         }
         
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Index", "UserManagement");
     }
 }
