@@ -33,7 +33,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Creat
         user.UserName = Guid.NewGuid().ToString();
 
         await _userManager.CreateAsync(user, request.Password);
-        await _signInManager.SignInAsync(user, false);
+        await _signInManager.SignInAsync(user, true);
 
         return CreateUserResult.Successfully;
     }

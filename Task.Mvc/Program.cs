@@ -1,3 +1,4 @@
+using System.Net;
 using System.Reflection;
 using Task.Application;
 using Task.Application.Common.Filters;
@@ -8,6 +9,11 @@ using Task.Persistence;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Listen(IPAddress.Any, Convert.ToInt32(Environment.GetEnvironmentVariable("PORT")));
+});
 
 builder.Services.AddAutoMapper(config =>
 {
