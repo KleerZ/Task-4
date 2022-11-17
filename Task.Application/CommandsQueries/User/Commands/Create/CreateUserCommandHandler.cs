@@ -30,8 +30,9 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Creat
         user.RegistrationDate = DateTime.UtcNow;
         user.LastLoginDate = DateTime.UtcNow;
         user.Status = UserStatus.Default;
+        user.UserName = Guid.NewGuid().ToString();
 
-        await _userManager.CreateAsync(user);
+        await _userManager.CreateAsync(user, request.Password);
         await _signInManager.SignInAsync(user, false);
 
         return CreateUserResult.Successfully;

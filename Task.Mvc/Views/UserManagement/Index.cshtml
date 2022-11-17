@@ -54,7 +54,7 @@
                         <input class="form-check-input user-chbox" value="@user.Id" type="checkbox">
                     </th>
                     <td class="user-id">@user.Id</td>
-                    <td>@user.UserName</td>
+                    <td>@user.Name</td>
                     <td>@user.Email</td>
                     <td>@user.RegistrationDate</td>
                     <td>@user.LastLoginDate</td>
@@ -65,3 +65,7 @@
         </table>
     </div>
 </div>
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/sendData.js" asp-append-version="true"></script>
+<script src="~/js/getCheckedUsers.js" asp-append-version="true"></script>

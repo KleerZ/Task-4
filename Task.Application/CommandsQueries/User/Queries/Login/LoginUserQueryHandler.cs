@@ -23,7 +23,7 @@ public class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, ModelStateD
         var user = await _userManager.FindByEmailAsync(request.Email);
         var isCorrectPassword = await _userManager.CheckPasswordAsync(user, request.Password);
 
-        if (user is null && !isCorrectPassword)
+        if (user is null || !isCorrectPassword)
         {
             request.ModelState.AddModelError("UserIsNotExist", "There is no user with this data");
             return request.ModelState;

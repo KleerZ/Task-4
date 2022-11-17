@@ -9,7 +9,7 @@ public class RegistrationViewModel : IMapWith<CreateUserCommand>
 {
     [Required(ErrorMessage = "Username is required")]
     [MaxLength(100, ErrorMessage = "Max length - 100")]
-    public string UserName { get; set; }
+    public string Name { get; set; }
     
     [Required]
     [EmailAddress]
@@ -25,8 +25,8 @@ public class RegistrationViewModel : IMapWith<CreateUserCommand>
     public void Mapping(Profile profile)
     {
         profile.CreateMap<RegistrationViewModel, CreateUserCommand>()
-            .ForMember(u => u.UserName,
-                o => o.MapFrom(u => u.UserName))
+            .ForMember(u => u.Name,
+                o => o.MapFrom(u => u.Name))
             .ForMember(u => u.Email,
                 o => o.MapFrom(u => u.Email))
             .ForMember(u => u.Password,
