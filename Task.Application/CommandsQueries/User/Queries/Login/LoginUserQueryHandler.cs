@@ -35,7 +35,7 @@ public class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, ModelStateD
             return request.ModelState;
         }
 
-        await _signInManager.SignInAsync(user, false);
+        await _signInManager.SignInAsync(user, true);
 
         return request.ModelState;
     }
