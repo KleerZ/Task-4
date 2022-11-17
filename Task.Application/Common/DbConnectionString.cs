@@ -2,9 +2,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace Task.Application.Common;
 
-public class DbConnectionString
+public static class DbConnectionString
 {
-    public string GetFromVariables()
+    public static string GetFromVariables()
     {
         var connectionUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
@@ -20,7 +20,7 @@ public class DbConnectionString
         return $"Host={host};Database={database};Username={user};Password={password};SSL Mode=Require;Trust Server Certificate=true";
     }
     
-    public string GetFromAppSettings(string key)
+    public static string GetFromAppSettings(string key)
     {
         var path = Directory.GetCurrentDirectory().Replace("Persistence", "Mvc");
         var configuration = new ConfigurationBuilder()

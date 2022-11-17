@@ -15,12 +15,11 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         string connectionString;
-        var dbConnectionString = new DbConnectionString();
-        
+
         if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-            connectionString = dbConnectionString.GetFromVariables();
+            connectionString = DbConnectionString.GetFromVariables();
         else
-            connectionString = dbConnectionString.GetFromAppSettings("DbConnection");
+            connectionString = DbConnectionString.GetFromAppSettings("DbConnection");
 
         services.AddDbContext<ApplicationContext>(options =>
         {
