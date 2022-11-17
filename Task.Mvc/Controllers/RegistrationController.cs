@@ -2,7 +2,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Task.Application.CommandsQueries.User.Commands.Create;
-using Task.Application.Constants;
+using Task.Application.Common.Constants;
 using Task.Mvc.Models.User;
 
 namespace Task.Mvc.Controllers;

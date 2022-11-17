@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using Task.Application.Common;
 
 namespace Task.Persistence.DbContexts;
 
@@ -8,14 +9,15 @@ public class ApplicationContextFactory : IDesignTimeDbContextFactory<Application
 {
     public ApplicationContext CreateDbContext(string[] args)
     {
-        var path = Directory.GetCurrentDirectory().Replace("Persistence", "Mvc");
-        var configuration = new ConfigurationBuilder()
-            .SetBasePath(path)
-            .AddJsonFile("appsettings.json")
-            .Build();
+        string connectionString;
+        var dbConnectionString = new DbConnectionString();
 
         var builder = new DbContextOptionsBuilder<ApplicationContext>();
-        var connectionString = configuration["DbConnection"];
+
+        if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+            connectionString = dbConnectionString.GetFromVariables();
+        else
+            connectionString = dbConnectionString.GetFromAppSettings("DbConnection");
 
         builder.UseNpgsql(connectionString, 
             options => options.MigrationsAssembly("Task.Persistence"));

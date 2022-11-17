@@ -1,4 +1,4 @@
-namespace Task.Application.Constants;
+namespace Task.Application.Common.Constants;
 
 public static class UserStatus
 {

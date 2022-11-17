@@ -1,7 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Task.Application.Constants;
+using Task.Application.Common.Constants;
 
 namespace Task.Application.CommandsQueries.User.Queries.Login;
 

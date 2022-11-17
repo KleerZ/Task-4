@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Task.Application.CommandsQueries.User.Queries.Get;
-using Task.Application.Constants;
+using Task.Application.Common.Constants;
 using Task.Domain;
 
 namespace Task.Application.Common.Filters;

@@ -1,7 +1,7 @@
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Task.Application.Constants;
+using Task.Application.Common.Constants;
 
 namespace Task.Application.CommandsQueries.User.Commands.Create;
 

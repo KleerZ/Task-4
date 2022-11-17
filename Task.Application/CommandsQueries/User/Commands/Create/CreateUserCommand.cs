@@ -1,7 +1,7 @@
 using AutoMapper;
 using MediatR;
+using Task.Application.Common.Constants;
 using Task.Application.Common.Mappings;
-using Task.Application.Constants;
 
 namespace Task.Application.CommandsQueries.User.Commands.Create;
 

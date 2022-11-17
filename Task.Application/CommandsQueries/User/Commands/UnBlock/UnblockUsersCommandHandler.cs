@@ -1,6 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Task.Application.Constants;
+using Task.Application.Common.Constants;
 using Task.Application.Interfaces;
 
 namespace Task.Application.CommandsQueries.User.Commands.UnBlock;
