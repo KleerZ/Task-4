@@ -1,0 +1,71 @@
+@model dynamic
+
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<div class="container mt-5 px-2">
+
+    <div class="mb-2 d-flex justify-content-between align-items-center">
+
+        <div class="position-relative">
+            <button type="submit" id="block-btn" class="btn btn-dark">
+                Block
+            </button>
+            <button id="unblock-btn" class="btn btn-success">
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M21.1,12.5L22.5,13.91L15.97,20.5L12.5,17L13.9,15.59L15.97,17.67L21.1,12.5M11,4A4,4 0 0,1 15,8A4,4 0 0,1 11,12A4,4 0 0,1 7,8A4,4 0 0,1 11,4M11,6A2,2 0 0,0 9,8A2,2 0 0,0 11,10A2,2 0 0,0 13,8A2,2 0 0,0 11,6M11,13C11.68,13 12.5,13.09 13.41,13.26L11.74,14.93L11,14.9C8.03,14.9 4.9,16.36 4.9,17V18.1H11.1L13,20H3V17C3,14.34 8.33,13 11,13Z" />
+                </svg>
+            </button>
+            <button id="delete-btn" class="btn btn-danger text-white">
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="px-2">
+            <i class="fa fa-ellipsis-h ms-3"></i>
+        </div>
+
+    </div>
+    <div class="table-responsive user-table">
+        <table class="table table-responsive table-borderless">
+
+            <thead class="user-table-head">
+            <tr class="bg-light">
+                <th scope="col" width="5%">
+                    <input id="main-checkbox" class="form-check-input" type="checkbox">
+                </th>
+                <th scope="col" width="5%">Id</th>
+                <th scope="col" width="10%">Username</th>
+                <th scope="col" width="10%">Email</th>
+                <th scope="col" width="10%">Registration date</th>
+                <th scope="col" width="10%">Last login date</th>
+                <th scope="col" width="10%">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            @foreach (var user in Model)
+            {
+                <tr class="user-table-row">
+                    <th scope="row">
+                        <input class="form-check-input user-chbox" value="@user.Id" type="checkbox">
+                    </th>
+                    <td class="user-id">@user.Id</td>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.RegistrationDate</td>
+                    <td>@user.LastLoginDate</td>
+                    <td>@user.Status</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/sendData.js" asp-append-version="true"></script>
+<script src="~/js/getCheckedUsers.js" asp-append-version="true"></script>

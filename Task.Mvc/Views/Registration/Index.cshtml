@@ -1,0 +1,35 @@
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using RegistrationViewModel = Task.Mvc.Models.User.RegistrationViewModel
+
+@model RegistrationViewModel
+
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<form asp-action="Index" asp-controller="Registration" class="col-md-4">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input asp-for="Name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <span class="validation-error" asp-validation-for="Name"></span>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <span class="validation-error" asp-validation-for="Email"></span>
+        <span class="validation-error" aria-max>@Html.ValidationMessage("UserIsExist")</span>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1">
+        <span class="validation-error" asp-validation-for="Password"></span>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password confirmation</label>
+        <input asp-for="PasswordConfirm" type="password" class="form-control" id="exampleInputPassword1">
+        <span class="validation-error" asp-validation-for="PasswordConfirm"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign up</button>
+    <a asp-action="Index" asp-controller="Login" class="btn btn-outline-secondary">Login</a>
+</form>
